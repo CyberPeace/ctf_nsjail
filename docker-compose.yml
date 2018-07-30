@@ -1,0 +1,15 @@
+version: "3"
+services:
+  helloworld:
+    privileged: true
+    build: .
+    restart: unless-stopped
+    volumes: 
+      - ./nsjail.cfg:/etc/nsjail.cfg
+    environment:
+      - TCPDUMP_ENABLE=1
+      - CTF_PORT=1337
+    ports:
+      - "1337:1337"
+      - "9999:9999"
+      - "1222:22"
